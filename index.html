@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ختمة القرآن الكريم</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<style>
+/* Layout: deep-green header band with gold girih stars, then one vertical column of 30 Juz' slots. */
+:root {
+  --bg: #eef2ea;
+  --surface: #fafbf6;
+  --ink: #1c3a2f;
+  --muted: #5f7469;
+  --line: #d6dfd2;
+  --green: #2e6a52;
+  --green-soft: #e2ece4;
+  --gold: #a9833a;
+  --gold-soft: #f3ead6;
+  --band: #1d4537;
+  --band-ink: #f4efe0;
+  --danger: #a3462f;
+  --shadow: 0 1px 2px rgba(28, 58, 47, .06), 0 6px 18px rgba(28, 58, 47, .06);
+  --f-display: "Amiri", "Traditional Arabic", "Scheherazade New", serif;
+  --f-body: "IBM Plex Sans Arabic", "Geeza Pro", "Segoe UI", Tahoma, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1a16;
+    --surface: #15251f;
+    --ink: #e7ede4;
+    --muted: #9db0a5;
+    --line: #26392f;
+    --green: #74b596;
+    --green-soft: #1b3229;
+    --gold: #d6b56b;
+    --gold-soft: #2b2a1d;
+    --band: #0a1511;
+    --band-ink: #efe8d3;
+    --danger: #e08a72;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .25);
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 var(--f-body);
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* ---------- header band ---------- */
+.band {
+  position: relative;
+  background-color: var(--band);
+  color: var(--band-ink);
+  overflow: hidden;
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.band::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23d6b56b' stroke-width='1'%3E%3Cpath d='M40 14 L47.5 32.5 L66 40 L47.5 47.5 L40 66 L32.5 47.5 L14 40 L32.5 32.5 Z'/%3E%3Crect x='24' y='24' width='32' height='32' transform='rotate(45 40 40)'/%3E%3Crect x='24' y='24' width='32' height='32'/%3E%3Cpath d='M0 0 L14 14 M80 0 L66 14 M0 80 L14 66 M80 80 L66 66'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 80px;
+  opacity: .16;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.35) 55%, #000 100%);
+          mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.35) 55%, #000 100%);
+}
+.band-inner {
+  position: relative;
+  padding-block: 32px 28px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+}
+.basmala { font-family: var(--f-display); font-size: 22px; color: var(--gold); margin: 0 0 4px; }
+h1 {
+  margin: 0;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(34px, 6vw, 48px);
+  line-height: 1.25;
+  text-wrap: balance;
+}
+.lede { margin: 8px 0 0; max-width: 46ch; color: color-mix(in srgb, var(--band-ink) 80%, transparent); }
+
+.medal { position: relative; width: 124px; height: 124px; flex: none; }
+.medal svg { width: 100%; height: 100%; transform: rotate(-90deg) scaleY(-1); }
+.medal .track { stroke: color-mix(in srgb, var(--band-ink) 16%, transparent); }
+.medal .fill { stroke: var(--gold); transition: stroke-dashoffset .8s ease; }
+.medal-text { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.medal-num { font-family: var(--f-display); font-size: 32px; line-height: 1.1; }
+.medal-sub { font-size: 13px; opacity: .8; }
+
+/* ---------- name bar ---------- */
+.namebar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.namebar-inner { padding-block: 12px; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.namebar label { font-weight: 600; }
+.namebar input {
+  flex: 1 1 200px;
+  min-width: 0;
+  font: inherit;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 14px;
+}
+.namebar input:focus { outline: 2px solid var(--gold); outline-offset: 1px; border-color: transparent; }
+.namebar input.shake { animation: shake .35s; border-color: var(--danger); }
+.hint { color: var(--muted); font-size: 14px; width: 100%; }
+.hint b { color: var(--ink); font-weight: 600; }
+@keyframes shake { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+
+/* ---------- vertical list ---------- */
+main { padding-block: 22px 40px; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; margin: 0 0 14px; color: var(--muted); font-size: 14px; }
+.meta .round { font-weight: 600; color: var(--ink); }
+.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+
+.slot {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  font: inherit;
+  color: inherit;
+  text-align: start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+.slot:hover:not([aria-disabled="true"]) { border-color: var(--gold); box-shadow: var(--shadow); transform: translateX(-2px); }
+.slot:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.slot.selected { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold) inset, var(--shadow); }
+
+.star { position: relative; width: 50px; height: 50px; display: grid; place-items: center; flex: none; }
+.star::before, .star::after {
+  content: ""; position: absolute; inset: 8px;
+  border: 1.5px solid var(--gold);
+  border-radius: 3px;
+  background: var(--surface);
+}
+.star::after { transform: rotate(45deg); }
+.star .num { position: relative; z-index: 1; font-family: var(--f-display); font-size: 20px; font-weight: 700; color: var(--ink); }
+
+.info { min-width: 0; display: flex; flex-direction: column; }
+.info .juz { font-size: 13px; color: var(--muted); }
+.info .surah { font-family: var(--f-display); font-size: 24px; font-weight: 700; line-height: 1.35; }
+
+.who {
+  justify-self: end;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+  max-width: 14rem;
+}
+.pill {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 3px 12px;
+  border-radius: 999px;
+  border: 1px dashed var(--line);
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.slot.taken { background: var(--green-soft); border-color: color-mix(in srgb, var(--green) 45%, var(--line)); cursor: default; }
+.slot.taken .star::before, .slot.taken .star::after { background: var(--green); border-color: var(--green); }
+.slot.taken .star .num { color: var(--surface); }
+.slot.taken .pill { border-style: solid; border-color: transparent; background: var(--surface); color: var(--green); }
+.slot.mine { background: var(--gold-soft); border-color: var(--gold); }
+.slot.mine .star::before, .slot.mine .star::after { background: var(--gold); border-color: var(--gold); }
+.slot.mine .pill { color: var(--gold); }
+
+.release {
+  font: inherit; font-size: 12px; font-weight: 600;
+  color: var(--danger);
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 2px 10px;
+  cursor: pointer;
+}
+
+/* ---------- confirm sheet ---------- */
+.sheet {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -8px 28px rgba(0,0,0,.12);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  transform: translateY(110%);
+  transition: transform .25s ease;
+}
+.sheet.open { transform: none; }
+.sheet-inner { padding-block: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; }
+.sheet-text { flex: 1 1 240px; min-width: 0; }
+.sheet-text strong { font-family: var(--f-display); font-size: 22px; display: block; }
+.sheet-text .hint { width: auto; }
+.sheet-actions { display: flex; gap: 10px; }
+
+.btn {
+  font: inherit; font-weight: 600;
+  border-radius: 10px;
+  padding: 9px 20px;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+}
+.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.btn.primary { background: var(--green); border-color: var(--green); color: var(--surface); }
+.btn.danger { border-color: var(--danger); color: var(--danger); }
+.btn.danger.armed { background: var(--danger); color: var(--surface); }
+.btn[disabled] { opacity: .55; cursor: wait; }
+
+/* ---------- toast ---------- */
+.toast {
+  position: fixed; left: 50%;
+  top: calc(16px + env(safe-area-inset-top, 0px));
+  transform: translate(-50%, calc(-100% - 60px));
+  z-index: 30;
+  max-width: calc(100% - 32px);
+  background: var(--ink); color: var(--surface);
+  padding: 10px 18px; border-radius: 10px; font-size: 15px;
+  transition: transform .25s ease;
+}
+.toast.show { transform: translate(-50%, 0); }
+
+/* ---------- footer / organizer ---------- */
+footer { border-top: 1px solid var(--line); padding-block: 20px 40px; color: var(--muted); font-size: 14px; }
+.foot { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: space-between; }
+.ayah { font-family: var(--f-display); font-size: 20px; color: var(--gold); }
+.linkbtn { font: inherit; color: var(--muted); background: none; border: 0; padding: 0; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.admin {
+  margin-top: 16px; padding: 16px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center; color: var(--ink);
+}
+.admin input {
+  font: inherit; color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px;
+  flex: 1 1 160px; min-width: 0; max-width: 240px;
+}
+.admin .msg { width: 100%; font-size: 14px; color: var(--muted); margin: 0; }
+.admin .msg.err { color: var(--danger); }
+
+.slot, .btn, .release, .linkbtn { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.slot:active:not([aria-disabled="true"]) { transform: scale(.99); border-color: var(--gold); }
+
+@media (max-width: 520px) {
+  body { font-size: 16px; }
+  .band-inner { grid-template-columns: 1fr auto; gap: 12px; padding-block: 18px 16px; }
+  .basmala { font-size: 17px; }
+  h1 { font-size: 30px; }
+  .lede { font-size: 14px; margin-top: 4px; }
+  .medal { width: 78px; height: 78px; align-self: end; }
+  .medal-num { font-size: 19px; }
+  .medal-sub { font-size: 11px; }
+  .namebar-inner { padding-block: 10px; gap: 6px 10px; }
+  .namebar input { flex-basis: 0; padding: 11px 14px; font-size: 16px; }
+  .hint { font-size: 13px; }
+  main { padding-block: 14px 110px; }
+  .list { gap: 10px; }
+  .slot { gap: 12px; padding: 12px; min-height: 76px; border-radius: 16px; }
+  .slot:hover:not([aria-disabled="true"]) { transform: none; box-shadow: none; }
+  .star { width: 46px; height: 46px; }
+  .info .surah { font-size: 22px; }
+  .who { max-width: 7.5rem; }
+  .pill { font-size: 13px; padding: 4px 10px; }
+  .release { padding: 6px 12px; font-size: 13px; }
+  .sheet-inner { padding-block: 14px 16px; }
+  .sheet-text { flex-basis: 100%; }
+  .sheet-actions { width: 100%; }
+  .sheet-actions .btn { flex: 1; padding: 14px; font-size: 17px; }
+  .foot { flex-direction: column; align-items: flex-start; }
+  .admin .btn { flex: 1 1 auto; padding: 12px; }
+  .admin input { max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="band">
+  <div class="wrap band-inner">
+    <div>
+      <p class="basmala">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
+      <h1>ختمة القرآن الكريم</h1>
+      <p class="lede">اختر جزءًا لتقرأه واحجزه باسمك، ونختم معًا القرآن كاملًا بإذن الله.</p>
+    </div>
+    <div class="medal" aria-live="polite">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <circle class="track" cx="60" cy="60" r="52" fill="none" stroke-width="7"></circle>
+        <circle class="fill" id="ring" cx="60" cy="60" r="52" fill="none" stroke-width="7" stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="326.73"></circle>
+      </svg>
+      <div class="medal-text">
+        <div class="medal-num"><span id="count">٠</span> / ٣٠</div>
+        <div class="medal-sub">جزءًا محجوزًا</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="namebar">
+  <div class="wrap namebar-inner">
+    <label for="name">اسمك</label>
+    <input id="name" type="text" maxlength="40" autocomplete="name" placeholder="مثال: عائشة">
+    <span class="hint" id="hint">اكتب اسمك، ثم اضغط على جزء متاح.</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="meta">
+    <span class="round" id="round"></span>
+    <span id="status">جارٍ تحميل الأجزاء…</span>
+  </div>
+  <ol class="list" id="list"></ol>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <span class="ayah">﴿ وَرَتِّلِ ٱلْقُرْءَانَ تَرْتِيلًا ﴾</span>
+      <span>سورة المزمل، الآية ٤</span>
+      <button class="linkbtn" id="orgToggle" type="button">المشرف</button>
+    </div>
+    <div class="admin" id="admin" hidden>
+      <div id="adminLogin" style="display:contents">
+        <label for="pw">كلمة مرور المشرف</label>
+        <input id="pw" type="password" autocomplete="current-password">
+        <button class="btn" id="pwBtn" type="button">دخول</button>
+      </div>
+      <div id="adminTools" style="display:none">
+        <strong>أدوات المشرف مفعّلة.</strong>
+        <span class="hint" style="width:auto">يظهر الآن زر «إلغاء الحجز» بجانب كل جزء محجوز.</span>
+        <button class="btn danger" id="resetBtn" type="button">مسح جميع الحجوزات</button>
+        <button class="btn" id="lockBtn" type="button">خروج</button>
+      </div>
+      <p class="msg" id="adminMsg"></p>
+    </div>
+  </div>
+</footer>
+
+<div class="sheet" id="sheet" role="dialog" aria-live="polite" aria-label="تأكيد الحجز">
+  <div class="wrap sheet-inner">
+    <div class="sheet-text" id="sheetText"></div>
+    <div class="sheet-actions">
+      <button class="btn primary" id="confirmBtn" type="button">احجز</button>
+      <button class="btn" id="cancelBtn" type="button">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* [Juz' number, Surah it starts in, starting ayah] */
+var JUZ = [
+  [1, "الفاتحة", 1], [2, "البقرة", 142], [3, "البقرة", 253], [4, "آل عمران", 93],
+  [5, "النساء", 24], [6, "النساء", 148], [7, "المائدة", 82], [8, "الأنعام", 111],
+  [9, "الأعراف", 88], [10, "الأنفال", 41], [11, "التوبة", 93], [12, "هود", 6],
+  [13, "يوسف", 53], [14, "الحجر", 1], [15, "الإسراء", 1], [16, "الكهف", 75],
+  [17, "الأنبياء", 1], [18, "المؤمنون", 1], [19, "الفرقان", 21], [20, "النمل", 56],
+  [21, "العنكبوت", 46], [22, "الأحزاب", 31], [23, "يس", 28], [24, "الزمر", 32],
+  [25, "فصلت", 47], [26, "الأحقاف", 1], [27, "الذاريات", 31], [28, "المجادلة", 1],
+  [29, "الملك", 1], [30, "النبأ", 1]
+];
+function ar(n) { return String(n).replace(/\d/g, function (d) { return "٠١٢٣٤٥٦٧٨٩"[d]; }); }
+function juzLabel(n) { return "الجزء " + ar(n); }
+function startLabel(j) { return j[2] === 1 ? "من بداية السورة" : "من الآية " + ar(j[2]); }
+
+/* ---------- server bridge (Apps Script, or an in-memory demo when opened as a plain file) ---------- */
+var API = "https://script.google.com/macros/s/AKfycbz0EswfugJVD-kMnllEGqeX8qRifzb3Odirn2EKrNksY9dqZJWsv8b8InPHXHQZcTSO/exec";
+/* Requests go without cookies, so Google never checks which account the visitor is signed in to. */
+function api(body) {
+  var req = body.action === "state"
+    ? fetch(API + "?action=state&t=" + Date.now(), { credentials: "omit", cache: "no-store" })
+    : fetch(API, { method: "POST", credentials: "omit", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(body) });
+  return req.then(function (r) { return r.json(); }).then(function (res) {
+    if (!res.ok) throw new Error(res.error || "حدث خطأ. حاول مرة أخرى.");
+    return res.data;
+  });
+}
+function call(fn) {
+  var a = Array.prototype.slice.call(arguments, 1);
+  if (fn === "getState") return api({ action: "state" });
+  if (fn === "claimJuz") return api({ action: "claim", juz: a[0], name: a[1] });
+  if (fn === "adminLogin") return api({ action: "login", password: a[0] });
+  if (fn === "adminRelease") return api({ action: "release", password: a[0], juz: a[1] });
+  if (fn === "adminReset") return api({ action: "reset", password: a[0] });
+  return Promise.reject(new Error("unknown"));
+}
+
+function load(store, key) { try { return window[store].getItem(key) || ""; } catch (e) { return ""; } }
+function save(store, key, val) { try { val ? window[store].setItem(key, val) : window[store].removeItem(key); } catch (e) {} }
+
+var state = null;
+var selected = null;
+var adminPw = load("sessionStorage", "khatma-pw");
+var $ = function (id) { return document.getElementById(id); };
+var nameInput = $("name");
+nameInput.value = load("localStorage", "khatma-name");
+
+function myName() { return nameInput.value.replace(/\s+/g, " ").trim(); }
+function same(a, b) { return a && b && a.toLowerCase() === b.toLowerCase(); }
+function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+
+function toast(msg) {
+  var t = $("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toast.timer);
+  toast.timer = setTimeout(function () { t.classList.remove("show"); }, 3200);
+}
+
+/* ---------- render ---------- */
+function render() {
+  var claims = (state && state.claims) || {};
+  var me = myName();
+  var list = $("list");
+  list.textContent = "";
+  var mine = [];
+  JUZ.forEach(function (j) {
+    var n = j[0], c = claims[n];
+    var isMine = c && same(c.name, me);
+    if (isMine) mine.push(n);
+    var li = document.createElement("li");
+    var row = el("div", "slot");
+    row.setAttribute("role", "button");
+    row.tabIndex = 0;
+    row.dataset.n = n;
+    if (c) { row.classList.add("taken"); row.setAttribute("aria-disabled", "true"); }
+    if (isMine) row.classList.add("mine");
+    if (selected === n) row.classList.add("selected");
+    row.setAttribute("aria-label", juzLabel(n) + "، سورة " + j[1] + (c ? "، محجوز باسم " + c.name : "، متاح"));
+
+    var star = el("span", "star");
+    star.appendChild(el("span", "num", ar(n)));
+    var info = el("span", "info");
+    info.appendChild(el("span", "juz", juzLabel(n) + " · " + startLabel(j)));
+    info.appendChild(el("span", "surah", "سورة " + j[1]));
+    var who = el("span", "who");
+    who.appendChild(el("span", "pill", c ? (isMine ? "أنت · " + c.name : c.name) : "متاح"));
+    if (c && adminPw) {
+      var rel = el("button", "release", "إلغاء الحجز");
+      rel.type = "button";
+      rel.addEventListener("click", function (ev) { ev.stopPropagation(); release(n, rel); });
+      who.appendChild(rel);
+    }
+    row.appendChild(star); row.appendChild(info); row.appendChild(who);
+    li.appendChild(row);
+    list.appendChild(li);
+  });
+
+  var count = Object.keys(claims).length;
+  $("count").textContent = ar(count);
+  $("ring").style.strokeDashoffset = String(326.73 * (1 - count / 30));
+  $("round").textContent = state ? "الختمة رقم " + ar(state.round || 1) : "";
+
+  var hint = $("hint");
+  hint.textContent = "";
+  if (count === 30) {
+    hint.appendChild(el("b", null, "تم حجز الأجزاء الثلاثين كلها."));
+    hint.appendChild(document.createTextNode(" تقبّل الله من الجميع."));
+  } else if (mine.length) {
+    hint.appendChild(document.createTextNode("أنت تقرأ "));
+    hint.appendChild(el("b", null, mine.map(juzLabel).join("، ")));
+    hint.appendChild(document.createTextNode(". يمكنك حجز جزء آخر."));
+  } else if (me) {
+    hint.appendChild(document.createTextNode("اضغط على جزء متاح لحجزه باسم "));
+    hint.appendChild(el("b", null, me));
+    hint.appendChild(document.createTextNode("."));
+  } else {
+    hint.textContent = "اكتب اسمك، ثم اضغط على جزء متاح.";
+  }
+}
+
+/* ---------- reserve flow ---------- */
+function pick(n) {
+  var c = state && state.claims[n];
+  if (c) { toast(juzLabel(n) + " محجوز باسم " + c.name + "."); return; }
+  if (!myName()) {
+    nameInput.classList.remove("shake"); void nameInput.offsetWidth; nameInput.classList.add("shake");
+    nameInput.focus();
+    toast("من فضلك اكتب اسمك أولًا.");
+    return;
+  }
+  selected = n;
+  var j = JUZ[n - 1];
+  var t = $("sheetText");
+  t.textContent = "";
+  t.appendChild(el("strong", null, "حجز " + juzLabel(n) + " · سورة " + j[1]));
+  t.appendChild(el("span", "hint", "باسم " + myName() + ". لا يمكن إلغاء الحجز إلا من قِبل المشرف."));
+  $("sheet").classList.add("open");
+  render();
+  $("confirmBtn").focus();
+}
+function closeSheet() { selected = null; $("sheet").classList.remove("open"); render(); }
+
+$("list").addEventListener("click", function (e) {
+  var r = e.target.closest(".slot"); if (r) pick(Number(r.dataset.n));
+});
+$("list").addEventListener("keydown", function (e) {
+  if (e.key !== "Enter" && e.key !== " ") return;
+  var r = e.target.closest(".slot"); if (r && e.target === r) { e.preventDefault(); pick(Number(r.dataset.n)); }
+});
+$("cancelBtn").addEventListener("click", closeSheet);
+document.addEventListener("keydown", function (e) { if (e.key === "Escape" && selected) closeSheet(); });
+
+$("confirmBtn").addEventListener("click", function () {
+  var n = selected, name = myName(), btn = this;
+  if (!n || !name) return;
+  btn.disabled = true;
+  call("claimJuz", n, name).then(function (res) {
+    state = res.state;
+    selected = null;
+    $("sheet").classList.remove("open");
+    render();
+    toast(res.ok ? "تم حجز " + juzLabel(n) + " باسمك. يسّر الله لك." : res.message);
+  }).catch(function (e) {
+    toast(e.message || "تعذّر الحجز. حاول مرة أخرى.");
+  }).then(function () { btn.disabled = false; });
+});
+
+nameInput.addEventListener("input", function () {
+  save("localStorage", "khatma-name", myName());
+  render();
+});
+
+/* ---------- live refresh ---------- */
+var lastSync = 0;
+function refresh() {
+  return call("getState").then(function (s) {
+    state = s; lastSync = Date.now();
+    $("status").textContent = "مباشر · يتحدّث كل ١٥ ثانية";
+    if (selected && state.claims[selected]) { toast("حجز أحدهم " + juzLabel(selected) + " للتو."); closeSheet(); }
+    else render();
+  }).catch(function () {
+    $("status").textContent = "تعذّر الاتصال الآن. نعيد المحاولة…";
+  });
+}
+setInterval(function () { if (!document.hidden) refresh(); }, 15000);
+document.addEventListener("visibilitychange", function () { if (!document.hidden && Date.now() - lastSync > 5000) refresh(); });
+
+/* ---------- organizer ---------- */
+function adminMsg(text, err) { var m = $("adminMsg"); m.textContent = text; m.className = "msg" + (err ? " err" : ""); }
+function showAdmin() {
+  $("adminLogin").style.display = adminPw ? "none" : "contents";
+  $("adminTools").style.display = adminPw ? "contents" : "none";
+}
+$("orgToggle").addEventListener("click", function () {
+  var a = $("admin"); a.hidden = !a.hidden; showAdmin();
+  if (!a.hidden && !adminPw) $("pw").focus();
+});
+function unlock() {
+  var pw = $("pw").value;
+  if (!pw) return;
+  $("pwBtn").disabled = true;
+  call("adminLogin", pw).then(function () {
+    adminPw = pw; save("sessionStorage", "khatma-pw", pw);
+    $("pw").value = ""; adminMsg(""); showAdmin(); render();
+  }).catch(function (e) { adminMsg(e.message, true); })
+    .then(function () { $("pwBtn").disabled = false; });
+}
+$("pwBtn").addEventListener("click", unlock);
+$("pw").addEventListener("keydown", function (e) { if (e.key === "Enter") unlock(); });
+$("lockBtn").addEventListener("click", function () {
+  adminPw = ""; save("sessionStorage", "khatma-pw", ""); disarm(); adminMsg(""); showAdmin(); render();
+});
+
+var resetBtn = $("resetBtn");
+function disarm() { resetBtn.classList.remove("armed"); resetBtn.textContent = "مسح جميع الحجوزات"; }
+resetBtn.addEventListener("click", function () {
+  if (!resetBtn.classList.contains("armed")) {
+    resetBtn.classList.add("armed");
+    resetBtn.textContent = "اضغط مرة أخرى للتأكيد";
+    clearTimeout(disarm.t); disarm.t = setTimeout(disarm, 5000);
+    return;
+  }
+  clearTimeout(disarm.t);
+  resetBtn.disabled = true;
+  call("adminReset", adminPw).then(function (s) {
+    state = s; render(); adminMsg("تم مسح الحجوزات. بدأت الختمة رقم " + ar(s.round) + ".");
+  }).catch(function (e) { adminMsg(e.message, true); })
+    .then(function () { resetBtn.disabled = false; disarm(); });
+});
+function release(n, btn) {
+  btn.disabled = true;
+  call("adminRelease", adminPw, n).then(function (s) {
+    state = s; render(); toast(juzLabel(n) + " متاح من جديد.");
+  }).catch(function (e) { toast(e.message); btn.disabled = false; });
+}
+
+render();
+refresh();
+</script>
+</body>
+</html>
