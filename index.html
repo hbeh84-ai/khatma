@@ -10,40 +10,23 @@
 <style>
 /* Layout: deep-green header band with gold girih stars, then one vertical column of 30 Juz' slots. */
 :root {
-  --bg: #eef2ea;
-  --surface: #fafbf6;
-  --ink: #1c3a2f;
-  --muted: #5f7469;
-  --line: #d6dfd2;
-  --green: #2e6a52;
-  --green-soft: #e2ece4;
-  --gold: #a9833a;
-  --gold-soft: #f3ead6;
-  --band: #1d4537;
-  --band-ink: #f4efe0;
+  /* Palette from the owner's photo: cream, beige, light sage, sage green */
+  --bg: #f7f1e7;
+  --surface: #fdfaf4;
+  --ink: #2f3b2c;
+  --muted: #6b735f;
+  --line: #e3d3be;
+  --green: #5f7653;
+  --green-soft: #c3c6a8;
+  --gold: #7f9471;
+  --gold-soft: #e3d3be;
+  --band: #9aad8c;
+  --band-ink: #26321f;
   --danger: #a3462f;
-  --shadow: 0 1px 2px rgba(28, 58, 47, .06), 0 6px 18px rgba(28, 58, 47, .06);
+  --shadow: 0 1px 2px rgba(47, 59, 44, .06), 0 6px 18px rgba(47, 59, 44, .07);
   --f-display: "Amiri", "Traditional Arabic", "Scheherazade New", serif;
   --f-body: "IBM Plex Sans Arabic", "Geeza Pro", "Segoe UI", Tahoma, sans-serif;
   color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0e1a16;
-    --surface: #15251f;
-    --ink: #e7ede4;
-    --muted: #9db0a5;
-    --line: #26392f;
-    --green: #74b596;
-    --green-soft: #1b3229;
-    --gold: #d6b56b;
-    --gold-soft: #2b2a1d;
-    --band: #0a1511;
-    --band-ink: #efe8d3;
-    --danger: #e08a72;
-    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .25);
-    color-scheme: dark;
-  }
 }
 
 * { box-sizing: border-box; }
@@ -73,9 +56,9 @@ body {
 .band::before {
   content: "";
   position: absolute; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23d6b56b' stroke-width='1'%3E%3Cpath d='M40 14 L47.5 32.5 L66 40 L47.5 47.5 L40 66 L32.5 47.5 L14 40 L32.5 32.5 Z'/%3E%3Crect x='24' y='24' width='32' height='32' transform='rotate(45 40 40)'/%3E%3Crect x='24' y='24' width='32' height='32'/%3E%3Cpath d='M0 0 L14 14 M80 0 L66 14 M0 80 L14 66 M80 80 L66 66'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23f7f1e7' stroke-width='1'%3E%3Cpath d='M40 14 L47.5 32.5 L66 40 L47.5 47.5 L40 66 L32.5 47.5 L14 40 L32.5 32.5 Z'/%3E%3Crect x='24' y='24' width='32' height='32' transform='rotate(45 40 40)'/%3E%3Crect x='24' y='24' width='32' height='32'/%3E%3Cpath d='M0 0 L14 14 M80 0 L66 14 M0 80 L14 66 M80 80 L66 66'/%3E%3C/g%3E%3C/svg%3E");
   background-size: 80px 80px;
-  opacity: .16;
+  opacity: .35;
   -webkit-mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.35) 55%, #000 100%);
           mask-image: linear-gradient(90deg, #000 0%, rgba(0,0,0,.35) 45%, rgba(0,0,0,.35) 55%, #000 100%);
 }
@@ -87,7 +70,7 @@ body {
   gap: 20px;
   align-items: center;
 }
-.basmala { font-family: var(--f-display); font-size: 22px; color: var(--gold); margin: 0 0 4px; }
+.basmala { font-family: var(--f-display); font-size: 22px; color: #fdfaf4; margin: 0 0 4px; }
 h1 {
   margin: 0;
   font-family: var(--f-display);
@@ -101,7 +84,7 @@ h1 {
 .medal { position: relative; width: 124px; height: 124px; flex: none; }
 .medal svg { width: 100%; height: 100%; transform: rotate(-90deg) scaleY(-1); }
 .medal .track { stroke: color-mix(in srgb, var(--band-ink) 16%, transparent); }
-.medal .fill { stroke: var(--gold); transition: stroke-dashoffset .8s ease; }
+.medal .fill { stroke: #fdfaf4; transition: stroke-dashoffset .8s ease; }
 .medal-text { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
 .medal-num { font-family: var(--f-display); font-size: 32px; line-height: 1.1; }
 .medal-sub { font-size: 13px; opacity: .8; }
@@ -188,13 +171,13 @@ main { padding-block: 22px 40px; }
   text-align: center;
 }
 
-.slot.taken { background: var(--green-soft); border-color: color-mix(in srgb, var(--green) 45%, var(--line)); cursor: default; }
+.slot.taken { background: var(--green-soft); border-color: #9aad8c; cursor: default; }
 .slot.taken .star::before, .slot.taken .star::after { background: var(--green); border-color: var(--green); }
 .slot.taken .star .num { color: var(--surface); }
-.slot.taken .pill { border-style: solid; border-color: transparent; background: var(--surface); color: var(--green); }
+.slot.taken .pill { border-style: solid; border-color: transparent; background: var(--surface); color: var(--ink); }
 .slot.mine { background: var(--gold-soft); border-color: var(--gold); }
 .slot.mine .star::before, .slot.mine .star::after { background: var(--gold); border-color: var(--gold); }
-.slot.mine .pill { color: var(--gold); }
+.slot.mine .pill { color: var(--ink); }
 
 .release {
   font: inherit; font-size: 12px; font-weight: 600;
